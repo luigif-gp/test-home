@@ -1,18 +1,9 @@
 import React, { useEffect } from 'react';
-import GraphCard from '../cards/graph-card';
-import MetricCard from '../cards/metric-card';
-import TableCard from '../cards/table-card';
-import { useAppSelector, useAppDispatch } from '../../store/hook';
-import { fetchGithub } from './homeSlice';
+import GraphCard from '../cards/graph';
+import MetricCard from '../cards/metric';
+import TableCard from '../cards/table';
 
 const Home = () => {
-  const github = useAppSelector((state) => state.github);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchGithub());
-  }, []);
-
   return (
     <div className="container w-full mx-auto pt-20">
       <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-white leading-normal">

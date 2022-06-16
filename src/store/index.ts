@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import githubReducer from '../components/home/homeSlice';
+import githubReducer from './features/commitSlice';
 
 const store = configureStore({
   reducer: {
