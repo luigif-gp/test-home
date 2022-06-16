@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import Footer from './pages/footer';
-import Home from './pages/home';
-import Navbar from './pages/navbar';
+import Home from './components/home/home';
+import Navbar from './components/navbar/navbar';
 
 function App() {
   return (
-    <div className="bg-black-alt font-sans leading-normal tracking-normal">
+    <div className="bg-default font-sans leading-normal tracking-normal">
       <Navbar />
       <Home />
-      <Footer />
     </div>
   );
 }
