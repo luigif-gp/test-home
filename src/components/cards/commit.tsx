@@ -16,10 +16,6 @@ const CommitCard: FC<CommitCardProps> = ({ data, loading }) => {
         <table className="w-full text-sm text-left  text-secondary ">
           <thead className="text-xmd text-box duration-700 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
             <tr>
-              <th scope="col" className="p-4">
-                <div className="flex items-center"></div>
-              </th>
-
               {tableNav.map((nav) => (
                 <th scope="col" className="px-6 py-3">
                   {nav}
@@ -38,29 +34,26 @@ export default CommitCard;
 
 interface TableBodyProps extends Commit {}
 
-const TableBody: FC<TableBodyProps> = ({ user, committer, message, date, url }) => {
+const TableBody: FC<TableBodyProps> = ({ user, message, date, url }) => {
   return (
     <tbody>
       <tr className="bg-gray-800 hover:bg-box hover:bg-opacity-90 overflow-hidden">
-        <td className="w-4 p-4">
-          <div className="flex items-center"></div>
+        <td className="">
+          <div className="lg:px-2 text-center text-xs lg:text-md text-gray-400">{user}</div>
         </td>
-        <th scope="row" className="px-2 text-gray-400">
-          {user}
-        </th>
-        <td className="px-3 py-4 max-w-xs overflow-hidden font-medium  transition-all">
+        <td className="px-3 py-4 max-w-lg font-medium transition-all text-ellipsis overflow-hidden xl:whitespace-pre">
           <a target="_blank" href={url}>
             {message}
           </a>
         </td>
-        <td className="px-6 py-4 text-xs text-secondary whitespace-no-wrap opacity-40 hover:opacity-100 ">
+        <td className="px-6 lg:px-2 text-center lg:py-4 text-xs text-secondary whitespace-no-wrap opacity-40 hover:opacity-100">
           <a target="_blank" href={url}>
-            <span className=" inline-flex lending-5 bg-gradient-to-r  from-green-400 to-blue-500 rounded-full  bg-opacity-40 p-1">
+            <span className="inline-flex lending-5 bg-gradient-to-r  from-green-400 to-blue-500 rounded-full  bg-opacity-40 p-1 lg:p-2">
               {new Date(date).toDateString()}
             </span>
           </a>
         </td>
-        <td className="px-6 py-4 max-w-xs text-xs">{new Date(date).toLocaleTimeString()}</td>
+        <td className="px-6 py-4 w-10 text-center max-w-xs text-xs">{new Date(date).toLocaleTimeString()}</td>
       </tr>
     </tbody>
   );

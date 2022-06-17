@@ -8,10 +8,10 @@ const Home: React.FC = () => {
   const { commit, loading, error } = useAppSelector((state) => state.commits);
   const selected = useAppSelector((state) => state.selectedData.selectedData);
   return (
-    <div className="container w-full mx-auto ">
-      <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-white leading-normal">
+    <div className="container mx-auto ">
+      <div className=" px-0 lg:px-4 md:px-0 mt-0 lg:mt-20 lg:mb-16 text-white leading-normal">
         <Form />
-        <div className="flex flex-row flex-wrap flex-grow mt-2">
+        <div className="flex flex-row flex-wrap flex-grow -mt-10 lg:mt-2">
           <TableCard {...commit} loading={loading} selected={selected} error={error} />
         </div>
       </div>

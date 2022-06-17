@@ -7,8 +7,8 @@ interface CheckBoxInputProps {
 
 export const CheckBoxInput: FC<CheckBoxInputProps> = ({ value, onChange }) => {
   return (
-    <div className="block">
-      <div className="mt-2">
+    <div className="grid">
+      <div className="-mt-8 lg:mt-2">
         <label className="inline-flex items-center">
           <input
             checked={value}
