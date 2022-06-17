@@ -7,6 +7,13 @@ export interface CommitCards {
   secondCard: Commit[];
 }
 
+export interface RepoSelector {
+  first: string;
+  second: string;
+  name: string;
+  mode: boolean;
+}
+
 type InitialState = {
   loading: boolean;
   commit: CommitCards;
@@ -18,17 +25,22 @@ const initialState: InitialState = {
   error: '',
 };
 
-type Params = {
-  repos: string[];
-  name: string;
-};
-
 // Generates pending, fulfilled and rejected action types
-export const fetchCommit = createAsyncThunk('github/fetchCommit', async (params: Params) => {
-  const { repos, name } = params;
+export const fetchCommit = createAsyncThunk('github/fetchCommit', async (params: RepoSelector) => {
+  const { first, second, name, mode } = params;
+
+  if (mode) {
+    const response = {
+      firstCard: await ApiRequest([name, first, 'commits']),
+      secondCard: await ApiRequest([name, second, 'commits']),
+    };
+
+    return response;
+  }
+
   const response = {
-    firstCard: await ApiRequest([name, repos[0], 'commits']),
-    secondCard: await ApiRequest([name, repos[1], 'commits']),
+    firstCard: await ApiRequest([name, first, 'commits']),
+    secondCard: null,
   };
 
   return response;

@@ -13,13 +13,8 @@ const initialState: InitialState = {
   error: '',
 };
 
-type Params = {
-  name: string;
-};
-
 // Generates pending, fulfilled and rejected action types
-export const fetchUserRepos = createAsyncThunk('github/fetchUserRepos', async (params: Params) => {
-  const { name } = params;
+export const fetchUserRepos = createAsyncThunk('github/fetchUserRepos', async (name: string) => {
   return await ApiRequest(name);
 });
 
