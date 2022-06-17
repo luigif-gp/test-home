@@ -1,11 +1,12 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import commitReducer from './features/commitSlice';
 import userDataReducer from './features/userReposSlice';
-
+import selectedDataReducer from './features/selectedSlice';
 const store = configureStore({
   reducer: {
     commits: commitReducer,
     userData: userDataReducer,
+    selectedData: selectedDataReducer,
   },
   middleware: getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== 'production',

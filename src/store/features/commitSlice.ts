@@ -17,17 +17,20 @@ export interface RepoSelector {
 type InitialState = {
   loading: boolean;
   commit: CommitCards;
+
   error: string;
 };
+
 const initialState: InitialState = {
   loading: false,
+
   commit: { firstCard: [], secondCard: [] },
   error: '',
 };
 
 // Generates pending, fulfilled and rejected action types
-export const fetchCommit = createAsyncThunk('github/fetchCommit', async (params: RepoSelector) => {
-  const { first, second, name, mode } = params;
+export const fetchCommit = createAsyncThunk('github/fetchCommit', async (selected: RepoSelector) => {
+  const { first, second, name, mode } = selected;
 
   if (mode) {
     const response = {
