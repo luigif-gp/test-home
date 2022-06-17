@@ -1,47 +1,65 @@
-const CommitCard = () => {
+import { FC } from 'react';
+import { Commit } from '../../store/features/interfaces';
+
+interface CommitCardProps {
+  data: Commit[];
+}
+
+const CommitCard: FC<CommitCardProps> = ({ data }) => {
   const tableNav = ['User', 'Message', 'Date', 'Time'];
+
   return (
-    <table className="min-w-full">
-      <thead>
-        <tr>
-          {tableNav.map((nav) => (
-            <th className="px-6 py-3 text-ms font-medium leading-4 text-left text-black border-b border-primary bg-primary">
-              {nav}
-            </th>
+    <div className="grid grid-cols-1">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left text-secondary ">
+          <thead className="text-xmd text-box duration-700 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
+            <tr>
+              <th scope="col" className="p-4">
+                <div className="flex items-center"></div>
+              </th>
+
+              {tableNav.map((nav) => (
+                <th scope="col" className="px-6 py-3">
+                  {nav}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          {data.map((d) => (
+            <TableBody {...d} />
           ))}
-        </tr>
-      </thead>
-      <TableBody />
-    </table>
+        </table>
+      </div>
+    </div>
   );
 };
 export default CommitCard;
 
-const TableBody = () => {
+interface TableBodyProps extends Commit {}
+
+const TableBody: FC<TableBodyProps> = ({ user, committer, message, date, url }) => {
   return (
-    <tbody className="bg-white  ">
-      <tr className="">
-        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-          <div className="flex items-center">
-            <div className="text-sm font-normal leading-5 text-gray-400">John Doe</div>
-          </div>
+    <tbody>
+      <tr className="bg-gray-800 hover:bg-box hover:bg-opacity-90 overflow-hidden">
+        <td className="w-4 p-4">
+          <div className="flex items-center"></div>
         </td>
-
-        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-          <div className="text-sm font-medium hover:text-gray-500 transition-all leading-5 text-gray-800">
-            <a target="_blank" href="www.facebook.com">
-              john@example.com
-            </a>
-          </div>
+        <th scope="row" className="px-2 text-gray-400">
+          {user}
+        </th>
+        <td className="px-3 py-4 max-w-xs overflow-hidden font-medium  transition-all">
+          <a target="_blank" href={url}>
+            {message}
+          </a>
         </td>
-
-        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-          <span className="inline-flex px-2 text-xs font-bold leading-5 text-black bg-primary rounded-full">
-            Active
+        <td className="px-6 py-4 text-xs text-secondary whitespace-no-wrap opacity-40 hover:opacity-100 ">
+          <a target="_blank" href={url}>
+          <span className=" inline-flex lending-5 bg-gradient-to-r  from-green-400 to-blue-500 rounded-full  bg-opacity-40 p-1">
+            {new Date(date).toDateString()}
           </span>
+          </a>
         </td>
-
-        <td className="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">14:20</td>
+        <td className="px-6 py-4 max-w-xs text-xs">{new Date(date).toLocaleTimeString()}</td>
       </tr>
     </tbody>
   );

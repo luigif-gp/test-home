@@ -1,9 +1,11 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import githubReducer from './features/commitSlice';
+import commitReducer from './features/commitSlice';
+import userDataReducer from './features/userReposSlice';
 
 const store = configureStore({
   reducer: {
-    github: githubReducer,
+    commits: commitReducer,
+    userData: userDataReducer,
   },
   middleware: getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== 'production',
