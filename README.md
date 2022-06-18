@@ -25,7 +25,7 @@ build on local using `docker-compose-yml` we have 2 repositories for each enviro
 
 we also have this application on live using vercel to deploy our client.
 
-$link: https://test-home-delta.vercel.app/
+## link: https://test-home-delta.vercel.app/
 
 Vercel is a platform for frontend frameworks and static sites, 
 built to integrate with your headless content, commerce, or database.
