@@ -18,8 +18,8 @@ rename this file deleting ".example"
 
 $How to run 
 
-We have set on this app aws repositories with docker images to make faster to build on local
-using `docker-compose-yml` we have 2 repositories for each environments
+We have set on this app aws repositories with docker images to make faster to 
+build on local using `docker-compose-yml` we have 2 repositories for each environments
 
 ## run: docker compose up -d 
 
