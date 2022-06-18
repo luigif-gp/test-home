@@ -1,6 +1,7 @@
 export const ApiRequest = async (params: string[] | string) => {
   const url = process.env.REACT_APP_API;
-  if (!url) {
+  const apiKey = process.env.REACT_APP_API_KEY;
+  if (!url && !apiKey) {
     throw Error('credentials are missing');
   }
   const urlRequest = !Array.isArray(params) ? `${url}${params}` : `${url}${params[0]}/${params[1]}/${params[2]}`;
@@ -10,8 +11,20 @@ export const ApiRequest = async (params: string[] | string) => {
     mode: 'cors',
     headers: {
       'Access-Control-Allow-Origin': '*',
+      'x-api-key': `${apiKey}`,
     },
   }).then((data) => data.json());
+
+  if (response.statusCode === 401) {
+    throw Error('Unauthorized');
+  }
+
+  if (response.statusCode === 404 || response.message === 'Not Found') {
+    throw Error('Not Found');
+  }
+  if (response.statusCode === 500) {
+    throw Error('no response');
+  }
 
   return response;
 };

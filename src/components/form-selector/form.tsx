@@ -11,7 +11,6 @@ export const Form = () => {
   const selected = useAppSelector((state) => state.selectedData.selectedData);
   const { userRepos } = useAppSelector((state) => state.userData);
   const [selector, setSelector] = useState<RepoSelector>(selected);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -24,7 +23,6 @@ export const Form = () => {
   };
 
   const dispatchFetch = () => {
-    console.log(selector.mode);
     dispatch(fetchUserRepos(selector.name));
     dispatch(fetchCommit(selector));
     dispatch(fetchSelectedData(selector));
@@ -35,15 +33,17 @@ export const Form = () => {
         className="items-center justify-items-stretch  lg:grid-flow-col-dense grid lg:grid-cols-18 lg:gap-10"
         onSubmit={HandleSubmit}
       >
+        <SearchInput
+          selector={selector}
+          selectedName={selected.name}
+          value={selector.name}
+          onChange={(e) => setSelector((selector) => ({ ...selector, ...{ name: e } }))}
+        />
         <OptionsInput
           value={selector.first}
           onChange={(e) => setSelector((selector) => ({ ...selector, ...{ first: e } }))}
           userRepos={userRepos}
           disabled={true}
-        />
-        <SearchInput
-          value={selector.name}
-          onChange={(e) => setSelector((selector) => ({ ...selector, ...{ name: e } }))}
         />
         <OptionsInput
           value={selector.second}
@@ -58,9 +58,11 @@ export const Form = () => {
         />
         <button
           type="submit"
+          disabled={selector.name !== selected.name}
           className="grid items-center justify-center text-sm mb-10 lg:mb-0 font-medium p-4 lg:px-10 rounded-lg
-                 focus:scale-95 focus:opacity-50
-                 justify-self-center bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 "
+                 active:scale-95 active:opacity-50 disabled:opacity-50
+                 justify-self-center bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500
+                 border-b-4 border-blue-500 hover:border-pink-500  "
         >
           Search data
         </button>

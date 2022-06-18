@@ -36,6 +36,7 @@ export const fetchCommit = createAsyncThunk('github/fetchCommit', async (selecte
     const response = {
       firstCard: await ApiRequest([name, first, 'commits']),
       secondCard: await ApiRequest([name, second, 'commits']),
+      statusCode: 200,
     };
 
     return response;

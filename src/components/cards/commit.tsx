@@ -9,7 +9,6 @@ interface CommitCardProps {
 
 const CommitCard: FC<CommitCardProps> = ({ data, loading }) => {
   const tableNav = ['User', 'Message', 'Date', 'Time'];
-
   return (
     <div className="grid grid-cols-1">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -32,6 +31,11 @@ const CommitCard: FC<CommitCardProps> = ({ data, loading }) => {
 };
 export default CommitCard;
 
+const messageReducer = (message: string) => {
+  if (message.length > 60) return message.substring(0, 50).concat('...');
+  return message;
+};
+
 interface TableBodyProps extends Commit {}
 
 const TableBody: FC<TableBodyProps> = ({ user, message, date, url }) => {
@@ -41,9 +45,9 @@ const TableBody: FC<TableBodyProps> = ({ user, message, date, url }) => {
         <td className="">
           <div className="lg:px-2 text-center text-xs lg:text-md text-gray-400">{user}</div>
         </td>
-        <td className="px-3 py-4 max-w-lg font-medium transition-all text-ellipsis overflow-hidden xl:whitespace-pre">
+        <td className="px-3 py-4 max-w-lg font-medium transition-all text-ellipsis overflow-hidden  xl:whitespace-pre">
           <a target="_blank" href={url}>
-            {message}
+            {messageReducer(message)}
           </a>
         </td>
         <td className="px-6 lg:px-2 text-center lg:py-4 text-xs text-secondary whitespace-no-wrap opacity-40 hover:opacity-100">
