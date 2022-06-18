@@ -19,9 +19,9 @@ export const SearchInput: FC<SearchInputProps> = ({ value, onChange, selectedNam
   const handleValidationUser = () => {
     dispatch(fetchUserRepos(value));
 
-    if (userRepos[0].owner.login === value) {
-      dispatch(fetchSelectedData({ ...selector, ...{ name: value } }));
-    }
+    if (userRepos[0] && userRepos[0].owner.login === value) {
+        dispatch(fetchSelectedData({ ...selector, ...{ name: value } }));
+      }
   };
 
   return (
@@ -58,7 +58,7 @@ export const SearchInput: FC<SearchInputProps> = ({ value, onChange, selectedNam
         onClick={() => handleValidationUser()}
         type="button"
         disabled={value !== selectedName ? false : true}
-        className={`text-white font-bold py-2  rounded-lg active:scale-95' disabled:opacity-50 w-14
+        className={`text-white font-bold py-2 grid ml-44 lg:ml-0 justify-center rounded-lg active:scale-95' disabled:opacity-50 w-14
         ${value === selectedName ? 'bg-green-400' : 'bg-red-600'}`}
       >
         {loading ? <SmallLoading /> : 'test'}
