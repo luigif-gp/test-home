@@ -1,4 +1,4 @@
-# Getting Started Test-home React App
+# Getting Started Test-home React App (node -v 14.18.0)
 
 This project is base on `react-TS` as a client that the depends on a server
 base on `nestjs` that handle API request to Github.
@@ -18,14 +18,14 @@ rename this file deleting ".example"
 
 $How to run 
 
-We have set on this app aws repositories with docker images to make faster to build on local
-using `docker-compose-yml` we have 2 repositories for each environments
+We have set on this app aws repositories with docker images to make faster to 
+build on local using `docker-compose-yml` we have 2 repositories for each environments
 
-$run: docker compose up -d 
+## run: docker compose up -d 
 
 we also have this application on live using vercel to deploy our client.
 
-$link: https://test-home-delta.vercel.app/
+## link: https://test-home-delta.vercel.app/
 
 Vercel is a platform for frontend frameworks and static sites, 
 built to integrate with your headless content, commerce, or database.
