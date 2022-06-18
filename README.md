@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+# Getting Started Test-home React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is base on react-TS as a client that the depends on a server
+base on nestjs that handle API request to Github.
 
-## Available Scripts
+the expectation from the client is to show commits from this project and also
+from others users (if it is allow to show those commits).
 
-In the project directory, you can run:
+this required the following environment variables:
 
-### `yarn start`
+REACT_APP_API=
+REACT_APP_API_KEY=
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Please remember to use the `.env.example` file that we have in our dir folder
+rename this file deleting ".example"
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#How to run 
 
-### `yarn test`
+We have set on this app aws repositories with docker images to make faster to build on local
+using `docker-compose-yml` we have 2 repositories for each environments
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+$run: docker compose up -d 
 
-### `yarn build`
+we also have this application on live using vercel to deploy our client.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## link: https://test-home-delta.vercel.app/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Vercel is a platform for frontend frameworks and static sites, 
+built to integrate with your headless content, commerce, or database.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

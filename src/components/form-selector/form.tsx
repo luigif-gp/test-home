@@ -64,7 +64,7 @@ export const Form = () => {
                  justify-self-center bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500
                  border-b-4 border-blue-500 hover:border-pink-500  "
         >
-          Search data
+          Search
         </button>
       </form>
     </div>
