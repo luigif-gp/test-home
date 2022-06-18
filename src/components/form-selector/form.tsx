@@ -30,7 +30,7 @@ export const Form = () => {
   return (
     <div className="p-10 grid justify-items-stretch lg:grid-cols-18 gap-10 items-center">
       <form
-        className="items-center justify-items-stretch  lg:grid-flow-col-dense grid lg:grid-cols-18 lg:gap-10"
+        className="items-center justify-items-stretch   lg:grid-flow-col-dense grid lg:grid-cols-18 lg:gap-10"
         onSubmit={HandleSubmit}
       >
         <SearchInput
