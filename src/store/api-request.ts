@@ -8,8 +8,9 @@ export const ApiRequest = async (params: string[] | string) => {
 
   const response = await fetch(urlRequest, {
     method: 'GET',
-    mode: 'cors',
     headers: {
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Methods': 'GET',
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json; charset=utf-8',
       'x-api-key': `${apiKey}`,
