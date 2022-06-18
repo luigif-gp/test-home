@@ -1,18 +1,14 @@
 export const ApiRequest = async (params: string[] | string) => {
   const url = process.env.REACT_APP_API;
   const apiKey = process.env.REACT_APP_API_KEY;
-  if (!url && !apiKey) {
-    throw Error('credentials are missing');
+  if (!url || !apiKey) {
+    throw Error('Credentials are missing');
   }
   const urlRequest = !Array.isArray(params) ? `${url}${params}` : `${url}${params[0]}/${params[1]}/${params[2]}`;
 
   const response = await fetch(urlRequest, {
     method: 'GET',
     headers: {
-      'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Methods': 'GET',
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json; charset=utf-8',
       'x-api-key': `${apiKey}`,
     },
   }).then((data) => data.json());
