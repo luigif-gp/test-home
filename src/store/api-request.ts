@@ -11,6 +11,7 @@ export const ApiRequest = async (params: string[] | string) => {
     mode: 'cors',
     headers: {
       'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json; charset=utf-8',
       'x-api-key': `${apiKey}`,
     },
   }).then((data) => data.json());
