@@ -14,14 +14,16 @@ REACT_APP_API_KEY=
 ```
 
 Please remember to use the `.env.example` file that we have in our dir folder
-rename this file deleting ".example"
+rename this file deleting ".example".
 
-$How to run 
+##How to run: 
 
 We have set on this app aws repositories with docker images to make faster to 
-build on local using `docker-compose-yml` we have 2 repositories for each environments
-
-## run: docker compose up -d 
+build on local using `docker-compose-yml` we have 2 repositories for each environments.
+run:
+```bash
+#  docker compose up -d 
+```
 
 we also have this application on live using vercel to deploy our client.
 
@@ -30,7 +32,7 @@ we also have this application on live using vercel to deploy our client.
 Vercel is a platform for frontend frameworks and static sites, 
 built to integrate with your headless content, commerce, or database.
 
-#How to run without Docker
+##How to run without Docker
 
 (only if we also wish to run our server on local)
 we need to change this environment variable to a localhost i.e. `http://localhost:4000/`:
@@ -39,7 +41,7 @@ we need to change this environment variable to a localhost i.e. `http://localhos
 REACT_APP_API=
 ```
 
-$Use following command with node -v 14.18.0:
+Use following command with node -v 14.18.0:
 
 ## npm install
 
