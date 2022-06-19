@@ -9,9 +9,10 @@ import { fetchSelectedData } from '../../store/features/selectedSlice';
 
 export const Form = () => {
   const selected = useAppSelector((state) => state.selectedData.selectedData);
-  const { userRepos } = useAppSelector((state) => state.userData);
+  const { userRepos, loading } = useAppSelector((state) => state.userData);
   const [selector, setSelector] = useState<RepoSelector>(selected);
   const dispatch = useAppDispatch();
+  const userValidation = userRepos[0] && userRepos[0].owner.login === selector.name ? false : true;
 
   useEffect(() => {
     dispatchFetch();
@@ -30,11 +31,12 @@ export const Form = () => {
   return (
     <div className="p-10 grid justify-items-stretch lg:grid-cols-18 gap-10 items-center">
       <form
-        className="items-center justify-items-stretch   lg:grid-flow-col-dense grid lg:grid-cols-18 lg:gap-10"
+        className="items-center justify-items-stretch  lg:grid-flow-col-dense grid lg:grid-cols-18 lg:gap-10"
         onSubmit={HandleSubmit}
       >
         <SearchInput
-          selector={selector}
+          loading={loading}
+          valid={userValidation}
           selectedName={selected.name}
           value={selector.name}
           onChange={(e) => setSelector((selector) => ({ ...selector, ...{ name: e } }))}
@@ -58,7 +60,7 @@ export const Form = () => {
         />
         <button
           type="submit"
-          disabled={selector.name !== selected.name}
+          disabled={userValidation}
           className="grid items-center justify-center text-sm mb-10 lg:mb-0 font-medium p-4 lg:px-10 rounded-lg
                  active:scale-95 active:opacity-50 disabled:opacity-50
                  justify-self-center bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500

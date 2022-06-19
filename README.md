@@ -30,5 +30,17 @@ we also have this application on live using vercel to deploy our client.
 Vercel is a platform for frontend frameworks and static sites, 
 built to integrate with your headless content, commerce, or database.
 
+#How to run without Docker
 
+(only if we also wish to run our server on local)
+we need to change this environment variable to a localhost i.e. `http://localhost:4000/`:
 
+```bash
+REACT_APP_API=
+```
+
+$Use following command with node -v 14.18.0:
+
+## npm install
+
+## npm start
