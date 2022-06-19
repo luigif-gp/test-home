@@ -1,27 +1,21 @@
 import { ChangeEvent, FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hook';
+import { useAppDispatch } from '../../store/hook';
 import { fetchUserRepos } from '../../store/features/userReposSlice';
 import { SmallLoading } from '../utils/small-loading';
-import { fetchSelectedData } from '../../store/features/selectedSlice';
-import { RepoSelector } from '../../store/features/commitSlice';
 
 interface SearchInputProps {
   value: string;
   onChange: (arg: string) => void;
   selectedName: string;
-  selector: RepoSelector;
+  loading: boolean;
+  valid: boolean;
 }
 
-export const SearchInput: FC<SearchInputProps> = ({ value, onChange, selectedName, selector }) => {
-  const { userRepos, loading } = useAppSelector((state) => state.userData);
+export const SearchInput: FC<SearchInputProps> = ({ value, onChange, selectedName, loading, valid }) => {
   const dispatch = useAppDispatch();
 
   const handleValidationUser = () => {
     dispatch(fetchUserRepos(value));
-
-    if (userRepos[0] && userRepos[0].owner.login === value) {
-        dispatch(fetchSelectedData({ ...selector, ...{ name: value } }));
-      }
   };
 
   return (
@@ -57,9 +51,9 @@ export const SearchInput: FC<SearchInputProps> = ({ value, onChange, selectedNam
       <button
         onClick={() => handleValidationUser()}
         type="button"
-        disabled={value !== selectedName ? false : true}
-        className={`text-white font-bold py-2 grid ml-44 lg:ml-0 justify-center rounded-lg active:scale-95' disabled:opacity-50 w-14
-        ${value === selectedName ? 'bg-green-400' : 'bg-red-600'}`}
+        disabled={!valid}
+        className={`text-white font-bold py-2 grid lg:ml-0 justify-center rounded-lg active:scale-95' disabled:opacity-50 w-14
+        ${!valid ? 'bg-green-400' : 'bg-red-600'}`}
       >
         {loading ? <SmallLoading /> : 'test'}
       </button>
