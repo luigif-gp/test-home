@@ -2,14 +2,14 @@ version: '3.8'
 
 services:
   client:
-    image: 547206829132.dkr.ecr.eu-central-1.amazonaws.com/testhome
+    image: public.ecr.aws/c2c2v5q6/testhome
     ports:
       - 3000:3000
     restart: unless-stopped
     networks:
       - shared-networks
   server:
-    image: 547206829132.dkr.ecr.eu-central-1.amazonaws.com/nestcloudapp
+    image: public.ecr.aws/c2c2v5q6/nestcloudapp
     ports:
       - 4000:4000
     restart: unless-stopped
@@ -18,3 +18,5 @@ services:
 
 networks:
   shared-networks:
+
+
