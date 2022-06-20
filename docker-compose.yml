@@ -16,7 +16,7 @@ services:
     networks:
       - shared-networks
 
-networks:
+networks: 
   shared-networks:
 
 
